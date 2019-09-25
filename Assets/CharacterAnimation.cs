@@ -22,28 +22,43 @@ public class CharacterAnimation : MonoBehaviour
 
         if(Input.GetKey(KeyCode.UpArrow)) {
             animator.SetBool("isRunning", true);
-            character.transform.Translate(new Vector3(0,0,0.1f), Space.World);
-            character.transform.rotation = lookInDirection("Forward");
+
+            character.transform.Translate(
+                new Vector3(
+                    transform.forward.x * 0.05f,
+                    transform.forward.y * 0.05f,
+                    transform.forward.z * 0.05f), Space.World);
         }
         if(Input.GetKey(KeyCode.DownArrow)) {
             animator.SetBool("isRunning", true);
-            character.transform.Translate(new Vector3(0,0,-0.1f), Space.World);
+             character.transform.Translate(
+                new Vector3(
+                    transform.forward.x * -0.1f,
+                    transform.forward.y * -0.1f,
+                    transform.forward.z * -0.1f), Space.World);
             character.transform.rotation = lookInDirection("Backward");
 
           
         }
         if(Input.GetKey(KeyCode.RightArrow)) {
             animator.SetBool("isRunning", true);
-           // character.transform.Translate(new Vector3(0.1f,0,0), Space.World);
             character.transform.rotation = lookInDirection("Right");
+             character.transform.Translate(
+                new Vector3(
+                    transform.forward.x * 0.01f,
+                    transform.forward.y * 0.01f,
+                    transform.forward.z * 0.01f), Space.World);
 
             
         }
         if(Input.GetKey(KeyCode.LeftArrow)) {
             animator.SetBool("isRunning", true);
-            //character.transform.Translate(new Vector3(-0.1f,0,0), Space.World);
             character.transform.rotation = lookInDirection("Left");
-
+            character.transform.Translate(
+                new Vector3(
+                    transform.forward.x * 0.01f,
+                    transform.forward.y * 0.01f,
+                    transform.forward.z * 0.01f), Space.World);
 
         }    
     }
@@ -56,7 +71,11 @@ public class CharacterAnimation : MonoBehaviour
         float curZ = curRotation.z;
         Vector3 newLookDirection = new Vector3(0, 0, 1.0f);
 
-        if (direction.Equals("Right")) {
+        if (direction.Equals("Backward")) {
+            newLookDirection = new Vector3(-1 *curX, 0, -1 * curZ);
+        }
+        
+        else if (direction.Equals("Right")) {
             // default
             newLookDirection = new Vector3(1.0f, 0 , 0.0f);
             // if in top right quadrant aim for bottom right quadrant
