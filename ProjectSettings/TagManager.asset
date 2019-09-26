@@ -11,6 +11,9 @@ TagManager:
   - Door1
   - Door2
   - Door3
+  - D1Collider
+  - D2Collider
+  - D3Collider
   layers:
   - Default
   - TransparentFX

@@ -33,9 +33,9 @@ public class CharacterAnimation : MonoBehaviour
             animator.SetBool("isRunning", true);
              character.transform.Translate(
                 new Vector3(
-                    transform.forward.x * -0.1f,
-                    transform.forward.y * -0.1f,
-                    transform.forward.z * -0.1f), Space.World);
+                    transform.forward.x * -0.03f,
+                    transform.forward.y * -0.03f,
+                    transform.forward.z * -0.03f), Space.World);
             character.transform.rotation = lookInDirection("Backward");
 
           

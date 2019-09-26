@@ -15,27 +15,28 @@ public class CollisionScript : MonoBehaviour
     void Update()
     {
 
-        
+
     }
 
-      void OnCollisionEnter(Collision col) {
-       
-       if(bc.gameObject.tag.Equals("Key1")) {
-           DoorScript.door1Active = false;
+    void OnCollisionEnter(Collision col)
+    {
+        Debug.Log(bc.gameObject.tag);
+        if (bc.gameObject.tag.Equals("Key1"))
+        {
+            DoorScript.door1Active = false;
             Destroy(bc.gameObject);
+        }
+        else if (bc.gameObject.tag.Equals("Key2"))
+        {
+            DoorScript.door2Active = false;
+            Destroy(bc.gameObject);
+        }
+        else if (bc.gameObject.tag.Equals("Key3"))
+        {
+            DoorScript.door3Active = false;
+            Destroy(bc.gameObject);
+        }
+    }
 
-
-       }
-       else if(bc.gameObject.tag.Equals("Key2")) {
-           DoorScript.door2Active = false;
-            Destroy(bc.gameObject);
-           
-       }
-       else if(bc.gameObject.tag.Equals("Key3")) {
-           DoorScript.door3Active = false;
-            Destroy(bc.gameObject);
-       }
-      }
-    
 
 }
