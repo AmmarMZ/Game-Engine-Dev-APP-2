@@ -14,6 +14,9 @@ TagManager:
   - D1Collider
   - D2Collider
   - D3Collider
+  - Start
+  - Leaderboard
+  - Exit
   layers:
   - Default
   - TransparentFX
