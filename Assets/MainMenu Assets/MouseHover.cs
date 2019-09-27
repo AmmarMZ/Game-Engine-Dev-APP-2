@@ -6,9 +6,6 @@ using UnityEngine;
 public class MouseHover : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool isStart;
-    public bool isLeaderboard;
-    public bool isExit;
     void Start()
     {
         GetComponent<Renderer>().material.color = Color.white;
@@ -21,16 +18,15 @@ public class MouseHover : MonoBehaviour
     }
     void OnMouseEnter()
     {
-        Debug.Log("Entering");
-        if (this.gameObject.tag.Equals("Start"))
+        if (this.gameObject.tag.Equals("Start") || this.gameObject.name.Equals("Resume"))
         {
             GetComponent<Renderer>().material.color = Color.green;
         }
-        else if (this.gameObject.tag.Equals("Leaderboard"))
+        else if (this.gameObject.tag.Equals("Leaderboard") || this.gameObject.name.Equals("Restart"))
         {
             GetComponent<Renderer>().material.color = Color.blue;
         }
-        else if (this.gameObject.tag.Equals("Exit"))
+        else if (this.gameObject.name.Equals("Exit"))
         {
             GetComponent<Renderer>().material.color = Color.red;
         }
@@ -44,7 +40,6 @@ public class MouseHover : MonoBehaviour
 
     void OnMouseExit()
     {
-        Debug.Log("Exiting");
         GetComponent<Renderer>().material.color = Color.white;
     }
 } 

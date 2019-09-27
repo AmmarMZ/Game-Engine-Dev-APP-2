@@ -17,6 +17,10 @@ TagManager:
   - Start
   - Leaderboard
   - Exit
+  - Restart
+  - Resume
+  - Pause
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

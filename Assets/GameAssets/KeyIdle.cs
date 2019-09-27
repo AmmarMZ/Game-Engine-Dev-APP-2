@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class KeyIdle : MonoBehaviour
 {
-    private float rotationSpeed = 1.0f;
     private float rotationY = 90.0f;
-    private float height = 1.0f;
     // Start is called before the first frame update
     void Start()
     {

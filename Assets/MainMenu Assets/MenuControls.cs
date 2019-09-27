@@ -9,6 +9,9 @@ public class MenuControls : MonoBehaviour
     public bool isStart;
     public bool isLeaderboard;
     public bool isExit; 
+    public bool isRestart;
+    public bool isResume;
+    public bool isPauseExit;
     void Start()
     {
 
@@ -27,11 +30,22 @@ public class MenuControls : MonoBehaviour
         }
         if (isLeaderboard)
         {
-            SceneManager.LoadScene("Leaderboard");
+            SceneManager.LoadScene(2);
         }
         if (isExit)
         {
             Application.Quit();
+        }
+        if (isRestart) {
+            PauseScript.hidePauseScreen();
+            //SceneManager.UnloadSceneAsync(2);
+            SceneManager.LoadScene(1);
+        }
+        if (isResume) {
+            PauseScript.hidePauseScreen();
+        }
+        if(isPauseExit) {
+            SceneManager.LoadScene(0);
         }
     }
 }

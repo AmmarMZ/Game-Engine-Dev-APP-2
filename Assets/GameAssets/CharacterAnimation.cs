@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class CharacterAnimation : MonoBehaviour
 {
     private Animator animator;
     private Rigidbody character;
     public bool isTrueForward = true;
+    private Camera main;
+    public static GameObject pauseSceneRoot;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         character = GetComponent<Rigidbody>();
+    //    pauseSceneRoot = GameObject.FindWithTag ("PauseMenu");
+//        pauseSceneRoot.SetActive(false);
     }
 
     // Update is called once per frame
@@ -61,6 +68,9 @@ public class CharacterAnimation : MonoBehaviour
                     transform.forward.z * 0.01f), Space.World);
 
         }    
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            PauseScript.togglePauseScreen();
+        }
     }
 
     Quaternion lookInDirection(string direction) {
