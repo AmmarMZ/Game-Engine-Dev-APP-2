@@ -26,7 +26,7 @@ public class MouseHover : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = Color.blue;
         }
-        else if (this.gameObject.name.Equals("Exit"))
+        else if (this.gameObject.name.Equals("Exit") || this.gameObject.tag.Equals("Back"))
         {
             GetComponent<Renderer>().material.color = Color.red;
         }

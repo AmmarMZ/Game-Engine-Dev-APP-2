@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DoorScript : MonoBehaviour
 {
@@ -46,10 +47,13 @@ public class DoorScript : MonoBehaviour
         if (passedD2) {
             door2.GetComponent<Renderer>().material.color = new Color(0.9258f, 1.0f, 0.0f, 0.3f);
             door2.GetComponent<BoxCollider>().enabled = true;
+
         }
         if (passedD3) {
             door3.GetComponent<Renderer>().material.color = new Color(0.9258f, 1.0f, 0.0f, 0.3f);
             door3.GetComponent<BoxCollider>().enabled = true;
+            SceneManager.LoadScene(2);
+            passedD3 = false;
         }
     }
 }

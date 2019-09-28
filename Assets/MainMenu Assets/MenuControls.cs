@@ -20,7 +20,10 @@ public class MenuControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (isResume && Timer.isGameDone) {
+            GetComponent<TextMesh>().text = "Score " + Timer.totalTime;
+        }
+        
     }
     void OnMouseUp()
     {
@@ -30,7 +33,7 @@ public class MenuControls : MonoBehaviour
         }
         if (isLeaderboard)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
         if (isExit)
         {
@@ -38,10 +41,9 @@ public class MenuControls : MonoBehaviour
         }
         if (isRestart) {
             PauseScript.hidePauseScreen();
-            //SceneManager.UnloadSceneAsync(2);
             SceneManager.LoadScene(1);
         }
-        if (isResume) {
+        if (isResume && !Timer.isGameDone) {
             PauseScript.hidePauseScreen();
         }
         if(isPauseExit) {

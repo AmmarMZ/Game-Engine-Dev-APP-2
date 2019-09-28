@@ -21,6 +21,7 @@ TagManager:
   - Resume
   - Pause
   - PauseMenu
+  - Back
   layers:
   - Default
   - TransparentFX
