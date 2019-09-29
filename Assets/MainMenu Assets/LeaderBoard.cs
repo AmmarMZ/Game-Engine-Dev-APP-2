@@ -16,17 +16,17 @@ public class LeaderBoard : MonoBehaviour
     public static string[] scoreArray;
     void Start()
     {
-        // initialize();
-        // using (StreamReader sr = File.OpenText(path))
-        // {
-        //     string s = "";
-        //     int i = 0;
-        //     while ((s = sr.ReadLine()) != null && i < 3)
-        //     {
-        //         scoreArray[i++] = s;
-        //     }
-        //     sr.Close();
-        // }       
+        initialize();
+        scoreArray = new string [3];
+        scoreArray[0] = "N/A";
+        scoreArray[1] = "N/A";
+        scoreArray[2] = "N/A";
+
+        int i = 0;
+        string [] lines = File.ReadAllLines(path + scores);  
+        foreach (string line in lines) {
+            scoreArray[i++] = line;
+        }       
     }
 
     public static void initialize() {
@@ -63,50 +63,62 @@ public class LeaderBoard : MonoBehaviour
 
     public static void updateLeaderBoard(string id, string time)
     {
-        string [] output = new string [3];
+        id = "AMZ";
         string [] lines = File.ReadAllLines(path + scores);  
+
+        string [] trueOutput = new string [3] {"","",""};
+
+        int trueCount = 0;
+        for (int i = 0; i < lines.Length; i++) {
+            if (lines[i].Length != 0) {
+                trueOutput[trueCount++] = lines[i];
+            }
+            
+        }
+        Debug.Log(trueCount);
 
         int curMin = int.Parse(time.Substring(0, 2));
         int curSec = int.Parse(time.Substring(3, 2));
         int curMs = int.Parse(time.Substring(6, 2));
-
         float curTotal = curMin * 60 + curSec + curMs/100;
 
-        int idx = 0;
-        int toPlace = idx;
-        output[0] = id + " " + time;
-        foreach (string line in lines)  {
+        for (int i = 0; i < trueOutput.Length; i++) {
 
-            if (line.Length == 0) {
-                continue;
+            if (trueOutput[i].Length == 0) {
+                trueOutput[i] = id + " " + time;
+                break;
             }
-            string lTime = line.Substring(4, 8);
+            string lTime = trueOutput[i].Substring(4, 8);
             int min = int.Parse(lTime.Substring(0, 2));
             int sec = int.Parse(lTime.Substring(3, 2));
             int ms = int.Parse(lTime.Substring(6, 2));
-
             float lTotal = min * 60 + sec + ms/100;
 
-            if (curTotal <= lTotal) {
-                toPlace = idx;
-                break;
-            }
-            else {
-                toPlace = 2;
-            }
-            idx++;
-        }
-        
-        idx = 0;
-        foreach (string line in lines)  {
-            if (idx == toPlace) {
-                output[idx++] = id + " " + time;
-            }
-            if (idx != 3) {
-                output[idx++] = line;
-            }
+              if (curTotal <= lTotal) { 
 
+                  if (i == 0) {
+                    string temp1 = trueOutput[i];
+                    string temp2 = trueOutput[i + 1];
+
+                    trueOutput[i] = id + " " + time;
+                    trueOutput[i + 1] = temp1;
+                    trueOutput[i + 2] = temp2;
+                    break;
+
+                  }
+                  else if (i == 1) {
+                    string temp1 = trueOutput[i];
+                    trueOutput[i] = id + " " + time;
+                    trueOutput[i + 1] = temp1;
+                    break;
+                  }
+                  else if (i == 2) {
+                      trueOutput[i] = id + " " + time;
+                      break;
+                  }
+            } 
         }
-        File.WriteAllLines(path + scores, output);
+        scoreArray = trueOutput;
+        File.WriteAllLines(path + scores, trueOutput);
     }
 }

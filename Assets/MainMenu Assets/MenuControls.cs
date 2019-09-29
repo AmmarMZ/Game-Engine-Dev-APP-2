@@ -12,6 +12,7 @@ public class MenuControls : MonoBehaviour
     public bool isRestart;
     public bool isResume;
     public bool isPauseExit;
+    public bool isBack;
     void Start()
     {
 
@@ -27,7 +28,7 @@ public class MenuControls : MonoBehaviour
     }
     void OnMouseUp()
     {
-        if (isStart)
+        if (isStart && input.id != null)
         {
             SceneManager.LoadScene(1);
         }
@@ -47,6 +48,9 @@ public class MenuControls : MonoBehaviour
             PauseScript.hidePauseScreen();
         }
         if(isPauseExit) {
+            SceneManager.LoadScene(0);
+        }
+        if (isBack) {
             SceneManager.LoadScene(0);
         }
     }

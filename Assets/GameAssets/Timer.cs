@@ -32,15 +32,15 @@ public class Timer : MonoBehaviour
         if (!isGameDone && !isPaused) {
             time += curTime;
             leaderboardTime = time;
-            minutes = time / 60; //Divide the guiTime by sixty to get the minutes.
-            seconds = time % 60;//Use the euclidean division for the seconds.
+            minutes = time / 60;
+            seconds = time % 60;
             milliseconds = (time * 100) % 100;
             totalTime = string.Format ("{0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
             GetComponent<TextMesh>().text = totalTime;
         }
         if (isGameDone && !addToLeader) {
             LeaderBoard.initialize();
-            LeaderBoard.updateLeaderBoard("AMZ", totalTime);
+            LeaderBoard.updateLeaderBoard(input.id, totalTime);
             addToLeader = true;
         }
          //update the label value
