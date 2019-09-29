@@ -30,7 +30,9 @@ public class MenuControls : MonoBehaviour
     {
         if (isStart && input.id != null)
         {
-            SceneManager.LoadScene(1);
+            if (input.id.Length == 3) {
+                SceneManager.LoadScene(1);
+            }
         }
         if (isLeaderboard)
         {
@@ -43,15 +45,23 @@ public class MenuControls : MonoBehaviour
         if (isRestart) {
             PauseScript.hidePauseScreen();
             SceneManager.LoadScene(1);
+
+            DoorScript.passedD1 = false;
+            DoorScript.passedD2 = false;
+            DoorScript.passedD3 = false;
         }
         if (isResume && !Timer.isGameDone) {
             PauseScript.hidePauseScreen();
         }
         if(isPauseExit) {
             SceneManager.LoadScene(0);
+            PauseScript.isPaused = false;
+            input.id = "";
+            input.mainInputField.text = "";
         }
         if (isBack) {
             SceneManager.LoadScene(0);
+            input.mainInputField.text = "";
         }
     }
 }

@@ -63,7 +63,6 @@ public class LeaderBoard : MonoBehaviour
 
     public static void updateLeaderBoard(string id, string time)
     {
-        id = "AMZ";
         string [] lines = File.ReadAllLines(path + scores);  
 
         string [] trueOutput = new string [3] {"","",""};
@@ -75,8 +74,6 @@ public class LeaderBoard : MonoBehaviour
             }
             
         }
-        Debug.Log(trueCount);
-
         int curMin = int.Parse(time.Substring(0, 2));
         int curSec = int.Parse(time.Substring(3, 2));
         int curMs = int.Parse(time.Substring(6, 2));

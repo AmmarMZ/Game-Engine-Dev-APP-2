@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class input : MonoBehaviour
 {
     public static string id;
-    public InputField mainInputField;    
+    public static InputField mainInputField;    
     void Start()
     {
         mainInputField = GetComponent<InputField>();
@@ -21,8 +21,6 @@ public class input : MonoBehaviour
     public void OnvalueChange() {
         if(mainInputField.text.Length == 3) {
             id = mainInputField.text;
-                        Debug.Log(id);
-
             mainInputField.gameObject.SetActive(false);
         }
     }

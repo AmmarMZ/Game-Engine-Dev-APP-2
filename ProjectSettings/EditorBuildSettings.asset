@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PauseScreen.unity
     guid: f548c41e7341d2b4582069f01caca5aa
+  - enabled: 1
+    path: Assets/LeaderBoard.unity
+    guid: 3995da1449dffae4a8821b5a8f214125
   m_configObjects: {}
